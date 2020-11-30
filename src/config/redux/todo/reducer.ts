@@ -1,3 +1,4 @@
+import { AnyAction } from 'redux'
 import * as actionName from './string'
 
 const todoInitialState = {
@@ -9,12 +10,13 @@ const initialState = {
     action: "",
 }
 
-const todoReducer = (state: any = initialState, action: { type: string | number }): any => {
+const todoReducer = (state: any = initialState, action: AnyAction): any => {
     const _actions = {
         [actionName.TODO_ADD as string]: () => {
             return {
                 ...state,
                 action: action.type,
+                todo: [...state.todo, action.payload]
             }
         },
         [actionName.TODO_UPDATE as string]: () => {
