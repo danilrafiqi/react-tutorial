@@ -29,6 +29,7 @@ const todoReducer = (state: any = initialState, action: AnyAction): any => {
             return {
                 ...state,
                 action: action.type,
+                todo: state.todo.filter((_: string, i: number) => i !== action.payload)
             }
         },
         DEFAULT: () => state,

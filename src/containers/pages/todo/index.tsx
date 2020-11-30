@@ -17,7 +17,11 @@ const Todo = () => {
         create todo
       </button>
       {todoState.todo.map((v: string, i: number) => {
-        return <div key={i.toString()}> data {v}</div>
+        return <div key={i.toString()}> data {v}
+          <button onClick={() => dispatch(action.todoDelete(i))}>
+            delete
+        </button>
+        </div>
       })}
     </div>
   );
