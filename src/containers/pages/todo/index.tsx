@@ -14,12 +14,12 @@ const Todo = () => {
       <button onClick={() => {
         dispatch(action.todoAdd("mdanil"))
       }}>
-        create todo
+        Create Todo
       </button>
       {todoState.todo.map((v: string, i: number) => {
         return <div key={i.toString()}> data {v}
           <button onClick={() => dispatch(action.todoDelete(i))}>
-            delete
+            Delete
         </button>
         </div>
       })}
