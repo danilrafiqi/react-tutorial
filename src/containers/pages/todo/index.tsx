@@ -8,6 +8,8 @@ const Todo = () => {
   const todoState = useSelector(todoRootSelector, shallowEqual)
   const dispatch = useDispatch()
   const [todo, setTodo] = useState<string>('')
+  const [isUpdate, setIsUpdate] = useState<boolean>(false)
+  const [idx, setIdx] = useState<number>(0)
 
   return (
     <div>
@@ -18,18 +20,45 @@ const Todo = () => {
         }}
         value={todo}
       />
-      <button onClick={() => {
-        dispatch(action.todoAdd(todo))
-        setTodo('')
-      }}>
-        Create Todo
-      </button>
+
+      {
+        isUpdate ?
+          <button onClick={() => {
+            dispatch(action.todoUpdate({
+              idx: idx,
+              todo: todo,
+            }))
+            setIsUpdate(false)
+            setIdx(0)
+            setTodo('')
+          }}>
+            Update
+          </button>
+          :
+          <button onClick={() => {
+            dispatch(action.todoAdd(todo))
+            setTodo('')
+          }}>
+            Create
+          </button>
+      }
+
       {todoState.todo.map((v: string, i: number) => {
-        return <div key={i.toString()}> data {v}
-          <button onClick={() => dispatch(action.todoDelete(i))}>
-            Delete
-        </button>
-        </div>
+        return (
+          <div key={i.toString()}>
+            <div>{v}</div>
+            <button onClick={() => {
+              setTodo(v)
+              setIsUpdate(true)
+              setIdx(i)
+            }}>
+              Update
+            </button>
+            <button onClick={() => dispatch(action.todoDelete(i))}>
+              Delete
+            </button>
+          </div>
+        )
       })}
     </div>
   );

@@ -20,9 +20,11 @@ const todoReducer = (state: any = initialState, action: AnyAction): any => {
             }
         },
         [actionName.TODO_UPDATE as string]: () => {
+            state.todo.splice(action.payload.idx, 1, action.payload.todo)
             return {
                 ...state,
                 action: action.type,
+                todo: state.todo,
             }
         },
         [actionName.TODO_DELETE as string]: () => {

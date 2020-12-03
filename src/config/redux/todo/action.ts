@@ -8,6 +8,10 @@ export const todoDelete = (payload: number) => ({
     type: actionName.TODO_DELETE,
     payload: payload,
 })
-export const todoUpdate = () => ({
-    type: actionName.TODO_UPDATE
+export const todoUpdate = (payload: {
+    idx: number,
+    todo: string,
+}) => ({
+    type: actionName.TODO_UPDATE,
+    payload: payload,
 })
