@@ -19,6 +19,13 @@ const postReducer = (state: any = initialState, action: AnyAction): any => {
                 posts: [...state.posts, action.payload]
             }
         },
+        [actionName.UPDATE_POST as string]: () => {
+            return {
+                ...state,
+                action: action.type,
+                posts: action.payload,
+            }
+        },
         DEFAULT: () => state,
     }
     return (_actions[action.type] || _actions.DEFAULT)()
