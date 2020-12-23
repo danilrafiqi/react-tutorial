@@ -2,6 +2,8 @@ import { AnyAction } from 'redux'
 import * as actionName from './string'
 
 const postInitialState = {
+    loading: false,
+    error: undefined,
     posts: [],
 }
 
@@ -12,11 +14,11 @@ const initialState = {
 
 const postReducer = (state: any = initialState, action: AnyAction): any => {
     const _actions = {
-        [actionName.GET_POST as string]: () => {
+        [actionName.LOADING_POST as string]: () => {
             return {
                 ...state,
                 action: action.type,
-                posts: [...state.posts, action.payload]
+                loading: true,
             }
         },
         [actionName.UPDATE_POST as string]: () => {
@@ -24,6 +26,23 @@ const postReducer = (state: any = initialState, action: AnyAction): any => {
                 ...state,
                 action: action.type,
                 posts: action.payload,
+                loading: false,
+            }
+        },
+        [actionName.ERROR_POST as string]: () => {
+            return {
+                ...state,
+                action: action.type,
+                error: action.payload,
+                loading: false,
+            }
+        },
+        [actionName.RESET_POST as string]: () => {
+            return {
+                ...state,
+                action: '',
+                error: undefined,
+                loading: false,
             }
         },
         DEFAULT: () => state,
