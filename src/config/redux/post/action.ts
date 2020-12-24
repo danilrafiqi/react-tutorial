@@ -20,7 +20,10 @@ export const createPost = (payload: { id: number, title: string, author: string 
             title: payload.title,
             author: payload.author,
         }).then(res => {
-            dispatch(successCreatePost("Success Create Post"))
+            dispatch(successPost({
+                message: "Success Create Post",
+                type: actionName.CREATE_POST,
+            }))
         }).catch(err => {
             dispatch(errorPost("Error Create Post"))
         })
@@ -49,7 +52,10 @@ export const resetPost = () => ({
     type: actionName.RESET_POST,
 })
 
-export const successCreatePost = (payload: string) => ({
-    type: actionName.RESET_POST,
+export const successPost = (payload: {
+    type: string,
+    message: string,
+}) => ({
+    type: actionName.SUCCESS_POST,
     payload,
 })

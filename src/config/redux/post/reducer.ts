@@ -46,7 +46,7 @@ const postReducer = (state: any = initialState, action: AnyAction): any => {
                 loading: false,
             }
         },
-        [actionName.SUCCESS_CREATE_POST as string]: () => {
+        [actionName.SUCCESS_POST as string]: () => {
             return {
                 ...state,
                 action: action.type,
