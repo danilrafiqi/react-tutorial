@@ -23,6 +23,8 @@ const Post = () => {
         <div>{postState.error}</div>
       }
       <Link to='/todo'>todo</Link>
+      <br />
+      <Link to='/post/create'>Create Post</Link>
       {postState.loading ?
         <div>Loading . . .</div>
         :

@@ -12,6 +12,21 @@ export const getPost = () => {
     }
 }
 
+export const createPost = (payload: { id: number, title: string, author: string }) => {
+    return (dispatch: any) => {
+        dispatch(loadingPost())
+        return Axios.post("http://localhost:4000/posts", {
+            id: payload.id,
+            title: payload.title,
+            author: payload.author,
+        }).then(res => {
+            dispatch(successCreatePost("Success Create Post"))
+        }).catch(err => {
+            dispatch(errorPost("Error Create Post"))
+        })
+    }
+}
+
 export const updatePost = (payload: {
     "id": number,
     "title": number,
@@ -32,4 +47,9 @@ export const loadingPost = () => ({
 
 export const resetPost = () => ({
     type: actionName.RESET_POST,
+})
+
+export const successCreatePost = (payload: string) => ({
+    type: actionName.RESET_POST,
+    payload,
 })

@@ -4,6 +4,7 @@ import * as actionName from './string'
 const postInitialState = {
     loading: false,
     error: undefined,
+    success: undefined,
     posts: [],
 }
 
@@ -42,6 +43,14 @@ const postReducer = (state: any = initialState, action: AnyAction): any => {
                 ...state,
                 action: '',
                 error: undefined,
+                loading: false,
+            }
+        },
+        [actionName.SUCCESS_CREATE_POST as string]: () => {
+            return {
+                ...state,
+                action: action.type,
+                success: action.payload,
                 loading: false,
             }
         },
