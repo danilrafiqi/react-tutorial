@@ -6,6 +6,10 @@ export const getPost = () => {
         dispatch(loadingPost())
         return Axios.get("http://localhost:4000/posts").then(res => {
             dispatch(updatePost(res.data))
+            dispatch(successPost({
+                message: "Success GET Post",
+                type: actionName.GET_POST,
+            }))
         }).catch(err => {
             dispatch(errorPost("Error Fetch data"))
         })
@@ -26,6 +30,20 @@ export const createPost = (payload: { id: number, title: string, author: string 
             }))
         }).catch(err => {
             dispatch(errorPost("Error Create Post"))
+        })
+    }
+}
+
+export const deletePost = (id: number) => {
+    return (dispatch: any) => {
+        dispatch(loadingPost())
+        return Axios.delete(`http://localhost:4000/posts/${id}`).then(res => {
+            dispatch(successPost({
+                message: "Success Delete Post",
+                type: actionName.DELETE_POST,
+            }))
+        }).catch(err => {
+            dispatch(errorPost("Error Delete Post"))
         })
     }
 }

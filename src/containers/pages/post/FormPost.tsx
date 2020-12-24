@@ -12,7 +12,6 @@ const PostForm = () => {
     const postState = useSelector(postRootSelector)
 
     useEffect(() => {
-
         if (postState.success.type === actionName.CREATE_POST) {
             setAuthor("")
             setTitle("")

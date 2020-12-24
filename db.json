@@ -1,93 +1,12 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "id": 2,
-      "title": "ini judul",
-      "author": "danilrafiqi"
-    },
-    {
-      "id": 1608777905076,
-      "title": "halo dunia",
-      "author": "danil"
-    },
-    {
-      "id": 1608788003694,
-      "title": "react mastery",
-      "author": "mdanilrafiqi"
-    },
-    {
       "id": 1608788172877,
       "title": "jangan jadi react developer sebelum baca buku ini",
       "author": "danilrafiqi"
-    },
-    {
-      "id": 1608788265019,
-      "title": "sda",
-      "author": "sdf"
-    },
-    {
-      "id": 1608788316794,
-      "title": "sasa",
-      "author": "assds"
-    },
-    {
-      "id": 1608788563007,
-      "title": "jadi react developer",
-      "author": "danilrafiqi"
-    },
-    {
-      "id": 1608788674954,
-      "title": "sa",
-      "author": "ds"
-    },
-    {
-      "id": 1608788760059,
-      "title": "dffdq",
-      "author": "fdd"
-    },
-    {
-      "id": 1608788807581,
-      "title": "dadadsds",
-      "author": "sasadsds"
-    },
-    {
-      "id": 1608788825923,
-      "title": "dsdsd",
-      "author": "dsdsds"
-    },
-    {
-      "id": 1608788847567,
-      "title": "sdsdsdwd",
-      "author": "sddswwe"
-    },
-    {
-      "id": 1608788863995,
-      "title": "asasa",
-      "author": "sdds"
-    },
-    {
-      "id": 1608788874710,
-      "title": "sdsd",
-      "author": "sdsd"
-    },
-    {
-      "id": 1608788924686,
-      "title": "super super",
-      "author": "danil"
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
+  "comments": [],
   "profile": {
     "name": "typicode"
   }

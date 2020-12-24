@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { postRootSelector } from '../../../config/redux/post/selector';
+import { postActionSelector, postRootSelector } from '../../../config/redux/post/selector';
 import * as action from '../../../config/redux/post/action'
+import * as actionName from '../../../config/redux/post/string'
 import { Link } from 'react-router-dom';
 
 
 const Post = () => {
   const postState = useSelector(postRootSelector, shallowEqual)
   const dispatch = useDispatch()
+  const actionState = useSelector(postActionSelector)
+
+  useEffect(() => {
+    if (postState.success?.type === actionName.DELETE_POST) {
+      dispatch(action.getPost())
+    }
+    if (postState.success?.type === actionName.GET_POST) {
+      dispatch(action.resetPost())
+    }
+  }, [actionState])
 
   useEffect(() => {
     dispatch(action.getPost())
     return () => {
-      console.error("cek unmount")
       dispatch(action.resetPost())
     }
   }, [])
@@ -34,6 +44,12 @@ const Post = () => {
               <div>{v.id}</div>
               <div>{v.title}</div>
               <div>{v.author}</div>
+              <button onClick={() => {
+                dispatch(action.deletePost(v.id))
+              }}>
+                delete
+              </button>
+              <hr />
             </div>
           )
         })}

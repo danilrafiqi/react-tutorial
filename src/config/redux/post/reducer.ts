@@ -1,10 +1,15 @@
 import { AnyAction } from 'redux'
 import * as actionName from './string'
 
+const messageType = {
+    type: '',
+    message: ''
+}
+
 const postInitialState = {
     loading: false,
     error: undefined,
-    success: undefined,
+    success: messageType,
     posts: [],
 }
 
@@ -43,6 +48,7 @@ const postReducer = (state: any = initialState, action: AnyAction): any => {
                 ...state,
                 action: '',
                 error: undefined,
+                success: messageType,
                 loading: false,
             }
         },
