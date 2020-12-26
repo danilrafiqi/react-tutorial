@@ -30,8 +30,8 @@ const Post = () => {
 
   return (
     <div>
-      {postState.error &&
-        <div>{postState.error}</div>
+      {postState.error && postState.error.type === actionName.GET_POST &&
+        <div>{postState.error.message}</div>
       }
       <Link to='/todo'>todo</Link>
       <br />

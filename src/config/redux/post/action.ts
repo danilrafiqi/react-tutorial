@@ -11,7 +11,10 @@ export const getPost = () => {
                 type: actionName.GET_POST,
             }))
         }).catch(err => {
-            dispatch(errorPost("Error Fetch data"))
+            dispatch(errorPost({
+                message: "Error get Post",
+                type: actionName.GET_POST,
+            }))
         })
     }
 }
@@ -29,7 +32,10 @@ export const createPost = (payload: { id: number, title: string, author: string 
                 type: actionName.CREATE_POST,
             }))
         }).catch(err => {
-            dispatch(errorPost("Error Create Post"))
+            dispatch(errorPost({
+                message: "Error create Post",
+                type: actionName.CREATE_POST,
+            }))
         })
     }
 }
@@ -43,7 +49,10 @@ export const deletePost = (id: number) => {
                 type: actionName.DELETE_POST,
             }))
         }).catch(err => {
-            dispatch(errorPost("Error Delete Post"))
+            dispatch(errorPost({
+                message: "Error delete Post",
+                type: actionName.DELETE_POST,
+            }))
         })
     }
 }
@@ -66,7 +75,10 @@ export const editPost = (id: string, data: PostState) => {
                 type: actionName.EDIT_POST,
             }))
         }).catch(err => {
-            dispatch(errorPost("Error Edit Post"))
+            dispatch(errorPost({
+                message: "Error edit Post",
+                type: actionName.EDIT_POST,
+            }))
         })
     }
 }
@@ -77,11 +89,6 @@ export const updatePost = (payload: {
     "author": number
 }[]) => ({
     type: actionName.UPDATE_POST,
-    payload: payload,
-})
-
-export const errorPost = (payload: string) => ({
-    type: actionName.ERROR_POST,
     payload: payload,
 })
 
@@ -99,4 +106,11 @@ export const successPost = (payload: {
 }) => ({
     type: actionName.SUCCESS_POST,
     payload,
+})
+export const errorPost = (payload: {
+    type: string,
+    message: string,
+}) => ({
+    type: actionName.ERROR_POST,
+    payload: payload,
 })

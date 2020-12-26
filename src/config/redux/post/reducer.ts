@@ -8,7 +8,7 @@ const messageType = {
 
 const postInitialState = {
     loading: false,
-    error: undefined,
+    error: messageType,
     success: messageType,
     posts: [],
 }
@@ -47,7 +47,7 @@ const postReducer = (state: any = initialState, action: AnyAction): any => {
             return {
                 ...state,
                 action: '',
-                error: undefined,
+                error: messageType,
                 success: messageType,
                 loading: false,
             }
