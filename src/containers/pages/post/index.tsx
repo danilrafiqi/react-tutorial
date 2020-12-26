@@ -3,13 +3,14 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { postActionSelector, postRootSelector } from '../../../config/redux/post/selector';
 import * as action from '../../../config/redux/post/action'
 import * as actionName from '../../../config/redux/post/string'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 
 const Post = () => {
   const postState = useSelector(postRootSelector, shallowEqual)
   const dispatch = useDispatch()
   const actionState = useSelector(postActionSelector)
+  const history = useHistory()
 
   useEffect(() => {
     if (postState.success?.type === actionName.DELETE_POST) {
@@ -48,6 +49,11 @@ const Post = () => {
                 dispatch(action.deletePost(v.id))
               }}>
                 delete
+              </button>
+              <button onClick={() => {
+                history.push(`/post/${v.id}`, { post: v })
+              }}>
+                edit
               </button>
               <hr />
             </div>

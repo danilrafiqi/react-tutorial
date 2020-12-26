@@ -43,6 +43,10 @@ const Router = [
         component: PostForm,
         path: "/post/create",
         label: "Post Create",
+    }, {
+        component: PostForm,
+        path: "/post/:id",
+        label: "Post Edit",
     }
 ]
 export default Router

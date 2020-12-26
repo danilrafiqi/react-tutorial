@@ -48,6 +48,29 @@ export const deletePost = (id: number) => {
     }
 }
 
+type PostState = {
+    id: string
+    title: string
+    author: string
+}
+
+export const editPost = (id: string, data: PostState) => {
+    return (dispatch: any) => {
+        dispatch(loadingPost())
+        return Axios.put(`http://localhost:4000/posts/${id}`, {
+            title: data.title,
+            author: data.author,
+        }).then(res => {
+            dispatch(successPost({
+                message: "Success Edit Post",
+                type: actionName.EDIT_POST,
+            }))
+        }).catch(err => {
+            dispatch(errorPost("Error Edit Post"))
+        })
+    }
+}
+
 export const updatePost = (payload: {
     "id": number,
     "title": number,
